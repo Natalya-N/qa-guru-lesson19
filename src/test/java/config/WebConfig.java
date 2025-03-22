@@ -2,10 +2,6 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-//@WebConfig.Sources({
-//        "classpath:local.properties",
-//        "classpath:remote.properties"
-//})
 public interface WebConfig extends Config {
 
     @Key("baseUrl")
@@ -24,7 +20,7 @@ public interface WebConfig extends Config {
     String getBrowserSize();
 
     @Key("browserVersion")
-    @DefaultValue("100")
+    @DefaultValue("128")
     String getBrowserVersion();
 
     @Key("remote")

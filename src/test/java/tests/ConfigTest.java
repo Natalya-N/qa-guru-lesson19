@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-public class ConfigTest {
+public class ConfigTest extends TestBase {
 
     @Test
     void openPageTest() {
