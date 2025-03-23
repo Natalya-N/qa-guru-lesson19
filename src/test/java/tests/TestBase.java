@@ -22,9 +22,10 @@ public class TestBase {
     static void setUpBrowserConfiguration() {
 
         Configuration.baseUrl = config.getBaseUrl();
+        Configuration.browserSize = config.getBrowserSize();
         Configuration.browser = config.getBrowser();
         Configuration.browserVersion = config.getBrowserVersion();
-        Configuration.browserSize = config.getBrowserSize();
+
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
 
