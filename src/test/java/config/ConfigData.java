@@ -11,8 +11,7 @@ import java.net.URL;
 })*/
 
 @ConfigData.Sources({
-        "classpath:remote.properties",
-        "classpath:local.properties",
+        "classpath:${env}.properties"
 
 })
 public interface ConfigData extends Config {
