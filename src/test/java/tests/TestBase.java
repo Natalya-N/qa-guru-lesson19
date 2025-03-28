@@ -14,9 +14,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+
 public class TestBase {
 
-    static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
+    /*static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
 
     @BeforeAll
     static void setUpBrowserConfiguration() {
@@ -53,7 +55,41 @@ public class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
         Selenide.closeWebDriver();
+    }*/
+
+    @BeforeAll
+    static void beforeAll() {
+        Configuration.baseUrl = "https://samokat.ru";
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "128");
+        Configuration.remote = "https://user1:1234@" + System.getProperty("remoteHost") + "wd/hub";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.timeout = 10000;
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
     }
+
+    @BeforeEach
+    void beforeEach() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+
+    @AfterEach
+    void addAttachment() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+        closeWebDriver();
+    }
+
 
 
 }
