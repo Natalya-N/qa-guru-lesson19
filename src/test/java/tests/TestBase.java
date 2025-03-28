@@ -29,7 +29,7 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
 
-        if (config.isRemote()) {
+       // if (config.isRemote()) {
             Configuration.remote = config.getRemoteURL();
             DesiredCapabilities capabilities = new DesiredCapabilities();
             //Configuration.browserCapabilities = capabilities;
@@ -38,7 +38,7 @@ public class TestBase {
                     "enableVideo", true
             ));
 
-        }
+       // }
     }
 
     @BeforeEach
