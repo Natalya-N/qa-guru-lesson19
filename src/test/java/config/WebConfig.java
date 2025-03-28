@@ -9,7 +9,7 @@ import org.aeonbits.owner.Config;
 public interface WebConfig extends Config {
 
     @Key("baseUrl")
-    @DefaultValue("https://samokat.ru")
+    //@DefaultValue("https://samokat.ru")
     String getBaseUrl();
 
     @Key("browser")
