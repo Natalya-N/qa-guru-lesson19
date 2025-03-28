@@ -2,15 +2,23 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@WebConfig.Sources({
+import java.net.URL;
+
+/*@Config.LoadPolicy(Config.LoadType.MERGE)
+@Config.Sources({
+        "system:properties",
+        "classpath:${env}.properties"
+})*/
+
+@ConfigData.Sources({
         "classpath:local.properties",
         "classpath:remote.properties"
 })
-public interface WebConfig extends Config {
+public interface ConfigData extends Config {
 
     @Key("baseUrl")
-    //@DefaultValue("https://samokat.ru")
-    String getBaseUrl();
+    @DefaultValue("https://samokat.ru")
+    URL getBaseUrl();
 
     @Key("browser")
     @DefaultValue("chrome")
@@ -27,7 +35,7 @@ public interface WebConfig extends Config {
     @DefaultValue("128")
     String getBrowserVersion();
 
-    @Key("remote")
-    boolean isRemote();
+    @Key("isRemote")
+    Boolean getIsRemote();
 
 }

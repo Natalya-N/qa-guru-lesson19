@@ -1,9 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.WebConfig;
+import config.ConfigData;
+import config.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -18,12 +18,12 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-    /*static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
+    static ConfigData config = ConfigFactory.create(ConfigData.class, System.getProperties());
 
     @BeforeAll
     static void setUpBrowserConfiguration() {
 
-        Configuration.baseUrl = config.getBaseUrl();
+        Configuration.baseUrl = config.getBaseUrl().toString();
         Configuration.browserSize = config.getBrowserSize();
         Configuration.browser = config.getBrowser();
         Configuration.browserVersion = config.getBrowserVersion();
@@ -31,7 +31,7 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
 
-        if (config.isRemote()) {
+        //if (config.getIsRemote()) {
             Configuration.remote = config.getRemoteURL();
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -40,16 +40,17 @@ public class TestBase {
             ));
             Configuration.browserCapabilities = capabilities;
 
-        }
+        //}
     }
 
-    }*/
+    }
 
-    static WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
+    /*static ConfigData config = ConfigFactory.create(ConfigData.class, System.getProperties());
 
     @BeforeAll
     static void beforeAll() {
-        //Configuration.baseUrl = "https://samokat.ru";
+
+        Configuration.baseUrl = "https://samokat.ru";
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browser = System.getProperty("browser", "chrome");
@@ -79,8 +80,8 @@ public class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
         closeWebDriver();
-    }
+    }*/
 
 
 
-}
+
