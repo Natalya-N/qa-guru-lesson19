@@ -3,7 +3,6 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import config.ConfigData;
-import config.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -20,47 +19,18 @@ public class TestBase {
 
     static ConfigData config = ConfigFactory.create(ConfigData.class, System.getProperties());
 
-    /*@BeforeAll
-    static void setUpBrowserConfiguration() {
-
-        Configuration.baseUrl = config.getBaseUrl().toString();
-        Configuration.browserSize = config.getBrowserSize();
-        Configuration.browser = config.getBrowser();
-        Configuration.browserVersion = config.getBrowserVersion();
-
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 10000;
-
-        //if (config.getIsRemote()) {
-            Configuration.remote = config.getRemoteURL();
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                    "enableVNC", true,
-                    "enableVideo", true
-            ));
-            Configuration.browserCapabilities = capabilities;
-
-        //}
-    }*/
-
-
-    //static ConfigData config = ConfigFactory.create(ConfigData.class, System.getProperties());
-
     @BeforeAll
     static void beforeAll() {
 
         Configuration.baseUrl = config.getBaseUrl().toString();
         Configuration.browserSize = config.getBrowserSize();
-        //Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browser = config.getBrowser();
-        //Configuration.browser = System.getProperty("browser", "chrome");
-        //Configuration.browserVersion = System.getProperty("browserVersion", "128");
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
         boolean isRemote = Boolean.parseBoolean(System.getProperty("isRemote"));
-        System.out.println(isRemote + " isRemote!!!");
-        //String environment = System.getProperty("env");
+        String environment = System.getProperty("env");
+        System.out.println(environment + " environment!!!");
         if (isRemote) {
             Configuration.remote = "https://user1:1234@" + "selenoid.autotests.cloud/" + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
