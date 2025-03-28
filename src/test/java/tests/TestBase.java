@@ -20,7 +20,7 @@ public class TestBase {
 
     static ConfigData config = ConfigFactory.create(ConfigData.class, System.getProperties());
 
-    @BeforeAll
+    /*@BeforeAll
     static void setUpBrowserConfiguration() {
 
         Configuration.baseUrl = config.getBaseUrl().toString();
@@ -41,20 +41,21 @@ public class TestBase {
             Configuration.browserCapabilities = capabilities;
 
         //}
-    }
+    }*/
 
-    }
 
-    /*static ConfigData config = ConfigFactory.create(ConfigData.class, System.getProperties());
+    //static ConfigData config = ConfigFactory.create(ConfigData.class, System.getProperties());
 
     @BeforeAll
     static void beforeAll() {
 
-        Configuration.baseUrl = "https://samokat.ru";
-        Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "128");
+        Configuration.baseUrl = config.getBaseUrl().toString();
+        Configuration.browserSize = config.getBrowserSize();
+        //Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browser = config.getBrowser();
+        //Configuration.browser = System.getProperty("browser", "chrome");
+        //Configuration.browserVersion = System.getProperty("browserVersion", "128");
+        Configuration.browserVersion = config.getBrowserVersion();
         Configuration.remote = "https://user1:1234@" + "selenoid.autotests.cloud/" + "wd/hub";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
@@ -80,7 +81,8 @@ public class TestBase {
         Attach.browserConsoleLogs();
         Attach.addVideo();
         closeWebDriver();
-    }*/
+    }
+}
 
 
 
