@@ -29,16 +29,16 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
 
-       // if (config.isRemote()) {
+        if (config.isRemote()) {
             Configuration.remote = config.getRemoteURL();
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            //Configuration.browserCapabilities = capabilities;
+            Configuration.browserCapabilities = capabilities;
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,
                     "enableVideo", true
             ));
 
-       // }
+        }
     }
 
     @BeforeEach

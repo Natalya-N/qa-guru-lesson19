@@ -13,7 +13,7 @@ public interface WebConfig extends Config {
     String getBaseUrl();
 
     @Key("browser")
-    @DefaultValue("CHROME")
+    @DefaultValue("chrome")
     String getBrowser();
 
     @Key("remoteUrl")
@@ -24,11 +24,10 @@ public interface WebConfig extends Config {
     String getBrowserSize();
 
     @Key("browserVersion")
-    @DefaultValue("128.0")
+    @DefaultValue("128")
     String getBrowserVersion();
 
     @Key("remote")
-    @DefaultValue("false")
     boolean isRemote();
 
 }
