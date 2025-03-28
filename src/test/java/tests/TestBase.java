@@ -32,7 +32,7 @@ public class TestBase {
         if (config.isRemote()) {
             Configuration.remote = config.getRemoteURL();
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            Configuration.browserCapabilities = capabilities;
+            //Configuration.browserCapabilities = capabilities;
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,
                     "enableVideo", true
