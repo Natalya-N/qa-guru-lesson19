@@ -59,8 +59,8 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
         boolean isRemote = Boolean.parseBoolean(System.getProperty("isRemote"));
-        String environment = System.getProperty("env");
-        if (environment.equals("remote")) {
+        //String environment = System.getProperty("env");
+        if (isRemote) {
             Configuration.remote = "https://user1:1234@" + "selenoid.autotests.cloud/" + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
