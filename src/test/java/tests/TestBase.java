@@ -31,7 +31,7 @@ public class TestBase {
         boolean isRemote = Boolean.parseBoolean(System.getProperty("isRemote"));
         String environment = System.getProperty("env");
         if (isRemote) {
-            Configuration.remote = "https://user1:1234@" + "selenoid.autotests.cloud/" + "wd/hub";
+            Configuration.remote = "https://user1:1234@" + config.getRemoteURL() + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                     "enableVNC", true,
