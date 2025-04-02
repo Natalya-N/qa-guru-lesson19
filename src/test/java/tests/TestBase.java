@@ -30,7 +30,7 @@ public class TestBase {
         Configuration.timeout = 10000;
         boolean isRemote = Boolean.parseBoolean(System.getProperty("isRemote"));
         String environment = System.getProperty("env");
-        if (isRemote) {
+        if (environment.equals("remote")) {
             Configuration.remote = "https://user1:1234@" + config.getRemoteURL() + "/" + "wd/hub";
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(
