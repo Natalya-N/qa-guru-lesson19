@@ -28,7 +28,6 @@ public class TestBase {
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
-        boolean isRemote = Boolean.parseBoolean(System.getProperty("isRemote"));
         String environment = System.getProperty("env");
         if (environment.equals("remote")) {
             Configuration.remote = "https://user1:1234@" + config.getRemoteURL() + "/" + "wd/hub";
